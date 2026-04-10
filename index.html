@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Manish AI Generator</title>
+
+<style>
+
+body{
+font-family: Arial;
+text-align:center;
+background:#f2f2f2;
+margin:0;
+padding:0;
+}
+
+h1{
+background:black;
+color:white;
+padding:10px;
+}
+
+.container{
+margin-top:20px;
+}
+
+input{
+padding:5px;
+width:300px;
+font-size:16px;
+border:1px solid gray;
+border-radius:5px;
+}
+
+button{
+padding:10px 20px;
+font-size:16px;
+background:blue;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+margin:5px;
+}
+
+button:hover{
+background:darkblue;
+}
+
+#loading{
+font-size:18px;
+color:green;
+margin:15px;
+}
+
+.gallery{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+margin-top:20px;
+}
+
+.card{
+background:white;
+padding:10px;
+margin:10px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+img{
+width:200px;
+border-radius:10px;
+}
+
+.download{
+background:green;
+margin-top:10px;
+}
+
+.download:hover{
+background:darkgreen;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Manish AI Image Generator</h1>
+
+<div class="container">
+
+<input id="prompt" placeholder="Type your prompt">
+
+<br><br>
+
+<button onclick="generate()">Generate Images</button>
+
+<p id="loading"></p>
+
+</div>
+
+<div class="gallery">
+
+<div class="card">
+<img id="img1">
+<br>
+<button class="download" onclick="downloadImage('img1')">Download</button>
+</div>
+
+<div class="card">
+<img id="img2">
+<br>
+<button class="download" onclick="downloadImage('img2')">Download</button>
+</div>
+
+<div class="card">
+<img id="img3">
+<br>
+<button class="download" onclick="downloadImage('img3')">Download</button>
+</div>
+
+<div class="card">
+<img id="img4">
+<br>
+<button class="download" onclick="downloadImage('img4')">Download</button>
+</div>
+
+</div>
+
+<script>
+
+function generate(){
+
+var text = document.getElementById("prompt").value;
+
+document.getElementById("loading").innerHTML = "Generating AI Images...";
+
+setTimeout(function(){
+
+var url = "https://image.pollinations.ai/prompt/" + text;
+
+document.getElementById("img1").src = url;
+document.getElementById("img2").src = url;
+document.getElementById("img3").src = url;
+document.getElementById("img4").src = url;
+
+document.getElementById("loading").innerHTML = "Images Ready";
+
+},2000);
+
+}
+
+function downloadImage(id){
+
+var img = document.getElementById(id).src;
+
+var a = document.createElement("a");
+
+a.href = img;
+a.download = "ai-image.png";
+a.click();
+
+}
+
+</script>
+
+</body>
+</html>
