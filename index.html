@@ -62,3 +62,20 @@ document.getElementById("result").src=url;
 
 </body>
 </html>
+<input id="prompt" placeholder="Type prompt">
+
+<button onclick="generate()">Generate</button>
+
+<br><br>
+
+<img id="result">
+
+function generate(){
+
+var text = document.getElementById("prompt").value;
+
+var url = "https://image.pollinations.ai/prompt/" + encodeURIComponent(text);
+
+document.getElementById("result").src = url;
+
+}
