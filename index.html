@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>AI Image Generator</title>
+<title>AI Generator</title>
 
 <style>
 body{
@@ -16,7 +16,7 @@ padding-top:80px;
 background:#1e293b;
 padding:40px;
 border-radius:15px;
-width:400px;
+width:420px;
 margin:auto;
 }
 
@@ -30,13 +30,21 @@ margin-top:10px;
 
 button{
 padding:12px 20px;
-margin-top:15px;
+margin:10px;
 border:none;
 border-radius:8px;
-background:#22c55e;
-color:white;
 font-size:16px;
 cursor:pointer;
+}
+
+.imgbtn{
+background:#22c55e;
+color:white;
+}
+
+.videobtn{
+background:#3b82f6;
+color:white;
 }
 
 img{
@@ -52,13 +60,15 @@ border-radius:10px;
 
 <div class="container">
 
-<h2>AI Image Generator</h2>
+<h2>AI Generator</h2>
 
-<input id="prompt" placeholder="Type your image prompt">
+<input id="prompt" placeholder="Type your prompt">
 
 <br>
 
-<button onclick="generate()">Generate Image</button>
+<button class="imgbtn" onclick="generateImage()">🖼 Generate Image</button>
+
+<button class="videobtn" onclick="generateVideo()">🎬 Video Generator</button>
 
 <br>
 
@@ -68,13 +78,19 @@ border-radius:10px;
 
 <script>
 
-function generate(){
+function generateImage(){
 
-var text = document.getElementById("prompt").value;
+var text=document.getElementById("prompt").value;
 
-var url = "https://image.pollinations.ai/prompt/" + text;
+var url="https://image.pollinations.ai/prompt/"+text;
 
-document.getElementById("result").src = url;
+document.getElementById("result").src=url;
+
+}
+
+function generateVideo(){
+
+alert("Video generator coming soon");
 
 }
 
