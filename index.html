@@ -1,25 +1,74 @@
 <!DOCTYPE html>
+
 <html>
+
 <head>
 <title>Manish AI Image Generator</title>
-<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+font-family: Arial;
+text-align: center;
+background: grey;
+}
+
+h1{
+margin-top:50px;
+}
+
+input{
+width:300px;
+padding:10px;
+font-size:16px;
+}
+
+button{
+padding:10px 20px;
+font-size:16px;
+background:pink;
+border:none;
+cursor:pointer;
+}
+
+img{
+margin-top:20px;
+border-radius:10px;
+width:300px;
+}
+
+</style>
+
 </head>
 
 <body>
 
 <h1>AI Image Generator</h1>
 
-<input type="text" id="prompt" placeholder="Type something">
+<input id="prompt" placeholder="Type prompt">
 
 <br><br>
 
-<button onclick="generateImage()">Generate</button>
+<button onclick="generateImage()">Generate Image</button>
 
 <br><br>
 
-<img id="output" width="300">
+<img id="output">
 
-<script src="script.js"></script>
+<script>
+
+function generateImage(){
+
+let prompt = document.getElementById("prompt").value;
+
+let imageURL = "https://image.pollinations.ai/prompt/" + encodeURIComponent(prompt);
+
+document.getElementById("output").src = imageURL;
+
+}
+
+</script>
 
 </body>
+
 </html>
