@@ -1,71 +1,72 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-<title>Manish AI Image Generator</title>
+<title>AI Generator</title>
 
 <style>
-
 body{
 font-family: Arial;
+background:#0f172a;
+color:white;
 text-align:center;
-background: grey;
+padding-top:100px;
 }
 
-h1{
-margin-top:50px;
-}
-
-input{
-padding:10px;
-width:300px;
-font-size:16px;
+.container{
+background:#1e293b;
+padding:40px;
+border-radius:15px;
+width:350px;
+margin:auto;
 }
 
 button{
-padding:10px 20px;
-background:blue;
-color:white;
+width:200px;
+padding:12px;
+margin:10px;
 border:none;
-cursor:pointer;
+border-radius:8px;
 font-size:16px;
+cursor:pointer;
 }
 
-img{
-width:300px;
-margin-top:20px;
-border-radius:10px;
+.imgbtn{
+background:#22c55e;
+color:white;
 }
 
+.videobtn{
+background:#3b82f6;
+color:white;
+}
+
+button:hover{
+opacity:0.8;
+}
 </style>
 
 </head>
 
 <body>
 
-<h1>AI Image Generator</h1>
+<div class="container">
 
-<input id="prompt" placeholder="Type animal or nature">
+<h2>AI Generator</h2>
 
-<br><br>
+<button class="imgbtn" onclick="image()">🖼 Image Generator</button>
 
-<button onclick="generate()">Generate Image</button>
+<button class="videobtn" onclick="video()">🎬 Video Generator</button>
 
-<br><br>
-
-<img id="result">
+</div>
 
 <script>
 
-function generate(){
+function image(){
+alert("Image Generator Open");
+}
 
-var text = document.getElementById("prompt").value;
-
-var url = "https://picsum.photos/400?random=" + Math.floor(Math.random()*1000);
-
-document.getElementById("result").src = url;
-
+function video(){
+alert("Video Generator Open");
 }
 
 </script>
