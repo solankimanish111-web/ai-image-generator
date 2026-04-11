@@ -1,71 +1,20 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-<title>Manish AI Video Generator</title>
-
-<style>
-
-body{
-font-family: Arial;
-text-align:center;
-background: grey;
-}
-
-input{
-padding:10px;
-width:300px;
-}
-
-button{
-padding:10px 20px;
-background:blue;
-color:white;
-border:none;
-cursor:pointer;
-}
-
-video{
-margin-top:20px;
-width:400px;
-border-radius:10px;
-}
-
-</style>
-
+<title>Video Generator</title>
 </head>
 
-<body>
+<body style="text-align:center;font-family:Arial">
 
-<h1>AI Video Generator</h1>
+<h2>AI Video Generator</h2>
 
-<input id="prompt" placeholder="Type video idea">
-
-<br><br>
-
-<button onclick="generate()">Generate Video</button>
+<input placeholder="Type video prompt">
 
 <br><br>
 
-<video id="result" controls>
-<source src="" type="video/mp4">
-</video>
+<button>Generate Video</button>
 
-<script>
-
-function generate(){
-
-var text=document.getElementById("prompt").value;
-
-var videoURL="https://samplelib.com/lib/preview/mp4/sample-5s.mp4";
-
-document.getElementById("result").src=videoURL;
-
-}
-
-</script>
+<p>Video generator coming soon...</p>
 
 </body>
-
 </html>
