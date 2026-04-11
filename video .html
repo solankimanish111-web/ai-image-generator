@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Video Generator</title>
+<title>AI Video Generator</title>
 </head>
 
 <body style="text-align:center;font-family:Arial">
 
 <h2>AI Video Generator</h2>
 
-<input placeholder="Type video prompt">
+<input id="prompt" placeholder="Type video prompt">
 
 <br><br>
 
-<button>Generate Video</button>
+<button onclick="video()">Generate Video</button>
 
-<p>Video generator coming soon...</p>
+<p id="msg"></p>
+
+<script>
+
+function video(){
+
+var text=document.getElementById("prompt").value;
+
+document.getElementById("msg").innerHTML="Video generation for: "+text+" (demo)";
+
+}
+
+</script>
 
 </body>
 </html>
