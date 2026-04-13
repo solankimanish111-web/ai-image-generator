@@ -1,95 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Pro AI Image Generator</title>
-  <style>
-    body {
-      font-family: Arial;
-      text-align: center;
-      padding: 30px;
-      background: #111;
-      color: white;
-    }
-
-    input {
-      padding: 10px;
-      width: 250px;
-      border-radius: 8px;
-      border: none;
-    }
-
-    button {
-      padding: 10px 15px;
-      margin-left: 10px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      background: #00c3ff;
-      color: black;
-      font-weight: bold;
-    }
-
-    img {
-      margin-top: 20px;
-      border-radius: 10px;
-      max-width: 90%;
-    }
-
-    #status {
-      margin-top: 10px;
-      color: #aaa;
-    }
-
-    a {
-      display: inline-block;
-      margin-top: 10px;
-      color: #00c3ff;
-    }
-  </style>
-</head>
-<body>
-
-<h1>🔥 Pro AI Image Generator</h1>
+<h1>🔥 REAL AI IMAGE GENERATOR</h1>
 
 <input id="prompt" placeholder="Enter prompt">
 <button onclick="gen()">Generate</button>
 
 <p id="status"></p>
-
-<img id="img">
-
-<br>
-<a id="download" download="ai-image.jpg" style="display:none">Download Image</a>
+<img id="img" width="300">
 
 <script>
-function gen() {
+async function gen() {
   let p = document.getElementById("prompt").value;
-
-  if (!p) {
-    alert("Enter prompt");
-    return;
-  }
 
   document.getElementById("status").innerText = "Generating AI image...";
 
-  let url = "https://image.pollinations.ai/prompt/" + encodeURIComponent(p);
+  let res = await fetch("https://your-backend-url/generate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt: p })
+  });
 
-  let img = document.getElementById("img");
-  img.src = url;
+  let data = await res.json();
 
-  img.onload = function() {
-    document.getElementById("status").innerText = "Done ✅";
+  document.getElementById("img").src = data.image;
 
-    let dl = document.getElementById("download");
-    dl.href = url;
-    dl.style.display = "block";
-  }
-
-  img.onerror = function() {
-    document.getElementById("status").innerText = "Error loading image ❌";
-  }
+  document.getElementById("status").innerText = "Done ✅";
 }
 </script>
-
-</body>
-</html>
