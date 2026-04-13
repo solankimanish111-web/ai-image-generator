@@ -31,6 +31,22 @@ document.getElementById("result").src=url;
 }
 
 </script>
+<script>
+async function generateImage() {
+    let prompt = document.getElementById("prompt").value;
 
+    let response = await fetch("/api/generate", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ prompt: prompt })
+    });
+
+    let data = await response.json();
+
+    document.getElementById("img").src = data.data[0].url;
+}
+</script>
 </body>
 </html>
