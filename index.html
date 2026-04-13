@@ -1,22 +1,95 @@
-<h1>AI Image Generator</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pro AI Image Generator</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      padding: 30px;
+      background: #111;
+      color: white;
+    }
+
+    input {
+      padding: 10px;
+      width: 250px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      padding: 10px 15px;
+      margin-left: 10px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      background: #00c3ff;
+      color: black;
+      font-weight: bold;
+    }
+
+    img {
+      margin-top: 20px;
+      border-radius: 10px;
+      max-width: 90%;
+    }
+
+    #status {
+      margin-top: 10px;
+      color: #aaa;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #00c3ff;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🔥 Pro AI Image Generator</h1>
 
 <input id="prompt" placeholder="Enter prompt">
 <button onclick="gen()">Generate</button>
 
-<br><br>
-<img id="img" width="300">
+<p id="status"></p>
+
+<img id="img">
+
+<br>
+<a id="download" download="ai-image.jpg" style="display:none">Download Image</a>
 
 <script>
-async function gen() {
+function gen() {
   let p = document.getElementById("prompt").value;
 
   if (!p) {
-    alert("Enter prompt first");
+    alert("Enter prompt");
     return;
   }
 
-  // better stable image API
-  document.getElementById("img").src =
-  "https://image.pollinations.ai/prompt/" + encodeURIComponent(p);
+  document.getElementById("status").innerText = "Generating AI image...";
+
+  let url = "https://image.pollinations.ai/prompt/" + encodeURIComponent(p);
+
+  let img = document.getElementById("img");
+  img.src = url;
+
+  img.onload = function() {
+    document.getElementById("status").innerText = "Done ✅";
+
+    let dl = document.getElementById("download");
+    dl.href = url;
+    dl.style.display = "block";
+  }
+
+  img.onerror = function() {
+    document.getElementById("status").innerText = "Error loading image ❌";
+  }
 }
 </script>
+
+</body>
+</html>
