@@ -2,30 +2,67 @@
 <html>
 <head>
 <title>AI Video Generator</title>
-</head>
 
-<body style="text-align:center;font-family:Arial">
-
-<h2>AI Video Generator</h2>
-
-<input id="prompt" placeholder="Type video prompt">
-
-<br><br>
-
-<button onclick="video()">Generate Video</button>
-
-<p id="msg"></p>
-
-<script>
-
-function video(){
-
-var text=document.getElementById("prompt").value;
-
-document.getElementById("msg").innerHTML="Video generation for: "+text+" (demo)";
-
+<style>
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+padding-top:100px;
 }
 
+input{
+padding:10px;
+width:250px;
+}
+
+button{
+padding:10px 20px;
+margin:10px;
+border:none;
+border-radius:8px;
+background:#3b82f6;
+color:white;
+cursor:pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>AI Video Generator</h1>
+
+<input type="text" id="prompt" placeholder="Enter prompt">
+<br>
+
+<button onclick="generateVideo()">Generate Video</button>
+
+<p id="result"></p>
+
+<video id="video" width="300" controls></video>
+
+<script>
+async function generateVideo() {
+    let prompt = document.getElementById("prompt").value;
+
+    document.getElementById("result").innerText = "Processing... ⏳";
+
+    let res = await fetch("/api/generate", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ prompt })
+    });
+
+    let data = await res.json();
+
+    console.log(data);
+
+    document.getElementById("result").innerText = "Check console (F12)";
+}
 </script>
 
 </body>
