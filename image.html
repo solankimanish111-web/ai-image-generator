@@ -1,52 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>AI Image Generator</title>
-</head>
+<h1>AI Image Generator</h1>
 
-<body style="text-align:center;font-family:Arial">
+<input id="prompt" placeholder="Enter prompt">
+<button onclick="gen()">Generate</button>
 
-<h2>AI Image Generator</h2>
-
-<input id="prompt" placeholder="Type image prompt">
-
-<br><br>
-
-<button onclick="generate()">Generate Image</button>
-
-<br><br>
-
-<img id="result" width="400">
+<img id="img" width="300">
 
 <script>
-
-function generate(){
-
-var text=document.getElementById("prompt").value;
-
-var url="https://image.pollinations.ai/prompt/"+text;
-
-document.getElementById("result").src=url;
-
-}
-
-</script>
-<script>
-async function generateImage() {
-    let prompt = document.getElementById("prompt").value;
-
-    let response = await fetch("/api/generate", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ prompt: prompt })
-    });
-
-    let data = await response.json();
-
-    document.getElementById("img").src = data.data[0].url;
+function gen() {
+  let p = document.getElementById("prompt").value;
+  document.getElementById("img").src =
+  "https://source.unsplash.com/300x300/?" + p;
 }
 </script>
-</body>
-</html>
