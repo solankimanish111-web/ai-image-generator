@@ -1,50 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>AI Generator</title>
+<h1>AI Image Generator</h1>
 
-<style>
-body{
-font-family:Arial;
-background:#0f172a;
-color:white;
-text-align:center;
-padding-top:120px;
+<input id="prompt" placeholder="Enter prompt">
+<button onclick="gen()">Generate</button>
+
+<br><br>
+<img id="img" width="300">
+
+<script>
+function gen() {
+  let p = document.getElementById("prompt").value;
+
+  if (!p) {
+    alert("Please enter something");
+    return;
+  }
+
+  document.getElementById("img").src =
+  "https://source.unsplash.com/400x400/?" + encodeURIComponent(p);
 }
-
-button{
-padding:15px 25px;
-margin:15px;
-border:none;
-border-radius:10px;
-font-size:18px;
-cursor:pointer;
-}
-
-.imgbtn{
-background:#22c55e;
-color:white;
-}
-
-.videobtn{
-background:#3b82f6;
-color:white;
-}
-</style>
-
-</head>
-
-<body>
-
-<h1>AI Generator</h1>
-
-<a href="image.html">
-<button class="imgbtn">🖼 Image Generator</button>
-</a>
-
-<a href="video.html">
-<button class="videobtn">🎬 Video Generator</button>
-</a>
-
-</body>
-</html>
+</script>
