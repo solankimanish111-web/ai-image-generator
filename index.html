@@ -1,27 +1,29 @@
-<h1>🔥 REAL AI IMAGE GENERATOR</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Image Generator</title>
+</head>
+<body style="text-align:center;font-family:Arial">
+
+<h1>🔥 FREE AI IMAGE GENERATOR</h1>
 
 <input id="prompt" placeholder="Enter prompt">
 <button onclick="gen()">Generate</button>
 
-<p id="status"></p>
+<br><br>
+
 <img id="img" width="300">
 
 <script>
-async function gen() {
+function gen() {
   let p = document.getElementById("prompt").value;
 
-  document.getElementById("status").innerText = "Generating AI image...";
+  let url =
+    "https://image.pollinations.ai/prompt/" + encodeURIComponent(p);
 
-  let res = await fetch("https://your-backend-url/generate", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ prompt: p })
-  });
-
-  let data = await res.json();
-
-  document.getElementById("img").src = data.image;
-
-  document.getElementById("status").innerText = "Done ✅";
+  document.getElementById("img").src = url;
 }
 </script>
+
+</body>
+</html>
