@@ -30,3 +30,6 @@ app.post("/generate", async (req, res) => {
 });
 
 export default app;
+app.get("/", (req, res) => {
+  res.send("AI Server is Running ✔");
+});
