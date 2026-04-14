@@ -24,3 +24,8 @@ app.post("/generate", (req, res) => {
 });
 
 export default app;
+app.use(express.static("."));
+
+app.get("/", (req, res) => {
+  res.sendFile(process.cwd() + "/index.html");
+});
