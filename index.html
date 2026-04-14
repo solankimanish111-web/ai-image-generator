@@ -5,7 +5,7 @@
 </head>
 <body style="text-align:center;font-family:Arial">
 
-<h1>🔥 FREE AI IMAGE GENERATOR</h1>
+<h1>🔥 AI Image Generator</h1>
 
 <input id="prompt" placeholder="Enter prompt">
 <button onclick="gen()">Generate</button>
@@ -18,10 +18,13 @@
 function gen() {
   let p = document.getElementById("prompt").value;
 
-  let url =
-    "https://image.pollinations.ai/prompt/" + encodeURIComponent(p);
+  if (!p) {
+    alert("Enter prompt");
+    return;
+  }
 
-  document.getElementById("img").src = url;
+  document.getElementById("img").src =
+    "https://image.pollinations.ai/prompt/" + encodeURIComponent(p);
 }
 </script>
 
