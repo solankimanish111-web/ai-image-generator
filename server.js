@@ -1,23 +1,26 @@
-app.post("/generate", async (req, res) => {
-  try {
-    const prompt = req.body.prompt;
+import express from "express";
+import cors from "cors";
 
-    console.log("PROMPT:", prompt);
+const app = express();
+app.use(cors());
+app.use(express.json());
 
-    const response = await openai.images.generate({
-      model: "dall-e-3",
-      prompt: prompt,
-      size: "1024x1024"
-    });
+// frontend serve
+app.use(express.static("."));
 
-    console.log("RESPONSE:", response);
-
-    res.json({
-      image: response.data[0].url
-    });
-
-  } catch (error) {
-    console.log("ERROR:", error.message);
-    res.json({ error: error.message });
-  }
+// homepage
+app.get("/", (req, res) => {
+  res.sendFile(process.cwd() + "/index.html");
 });
+
+// FREE AI image generator
+app.post("/generate", (req, res) => {
+  const prompt = req.body.prompt;
+
+  const imageUrl =
+    "https://image.pollinations.ai/prompt/" + encodeURIComponent(prompt);
+
+  res.json({ image: imageUrl });
+});
+
+export default app;
