@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 const openai = new OpenAI({
-  apiKey: "YOUR_OPENAI_API_KEY"
+  apiKey: process.env.OPENAI_API_KEY
 });
 
 app.post("/generate", async (req, res) => {
@@ -29,4 +29,4 @@ app.post("/generate", async (req, res) => {
   }
 });
 
-app.listen(5000, () => console.log("Server running on 5000"));
+export default app;
