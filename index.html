@@ -2,8 +2,40 @@
 <html>
 <head>
   <title>AI Image Generator</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial;
+      background: #111;
+      color: white;
+      padding: 20px;
+    }
+
+    input {
+      padding: 10px;
+      width: 250px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background: cyan;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    img {
+      margin-top: 20px;
+      width: 300px;
+      border-radius: 10px;
+    }
+  </style>
 </head>
-<body style="text-align:center;font-family:Arial">
+
+<body>
 
 <h1>🔥 AI Image Generator</h1>
 
@@ -12,7 +44,7 @@
 
 <br><br>
 
-<img id="img" width="300">
+<img id="img">
 
 <script>
 function gen() {
@@ -23,8 +55,10 @@ function gen() {
     return;
   }
 
-  document.getElementById("img").src =
+  let url =
     "https://image.pollinations.ai/prompt/" + encodeURIComponent(p);
+
+  document.getElementById("img").src = url;
 }
 </script>
 
