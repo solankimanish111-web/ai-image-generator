@@ -33,3 +33,4 @@ export default app;
 app.get("/", (req, res) => {
   res.send("AI Server is Running ✔");
 });
+app.use(express.static("."));
